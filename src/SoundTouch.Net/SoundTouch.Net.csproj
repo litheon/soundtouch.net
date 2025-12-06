@@ -33,6 +33,7 @@ It is an open-source audio processing library that allows changing the sound tem
 * Bugfix: flush() didn't properly flush final samples from the pipeline on 2nd time in case that soundtouch object instance was recycled and used for processing a second audio stream.
 * Added C# example application that uses SoundTouch.NET library for processing mp3 files.
     </PackageReleaseNotes>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -64,4 +65,14 @@ It is an open-source audio processing library that allows changing the sound tem
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="GitVersion.MsBuild" Version="5.12.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <Target Name="EnsureGitVersion" BeforeTargets="CoreCompile">
+    <Message Text="GitVersion Being Invoked" Importance="High" />
+  </Target>
 </Project>
